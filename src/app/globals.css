@@ -20,7 +20,6 @@
 }
 
 body {
-  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
@@ -36,3 +35,7 @@ button {
   cursor: pointer;
 }
 
+.editor {
+  margin-left: 18.75rem;
+  padding: 1rem;
+}
