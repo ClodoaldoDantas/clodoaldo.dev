@@ -1,6 +1,5 @@
-import { FileIcon } from "lucide-react";
-import Link from "next/link";
-import { Folder } from "../folder";
+import { File } from "./file";
+import { Folder } from "./folder";
 import styles from "./styles.module.css";
 
 export function Explorer() {
@@ -10,29 +9,16 @@ export function Explorer() {
 
       <div className={styles.content}>
         <Folder title="about" defaultOpen>
-          <Link href="/" className={styles.file}>
-            <FileIcon size={18} />
-            index.md
-          </Link>
+          <File href="/docs/about">index.md</File>
         </Folder>
 
         <Folder title="experiences">
-          <Link href="/" className={styles.file}>
-            <FileIcon size={18} />
-            index.md
-          </Link>
+          <File href="/docs/experiences">index.md</File>
         </Folder>
 
         <Folder title="education">
-          <Link href="/" className={styles.file}>
-            <FileIcon size={18} />
-            qualifications.md
-          </Link>
-
-          <Link href="/" className={styles.file}>
-            <FileIcon size={18} />
-            courses.md
-          </Link>
+          <File href="/docs/qualifications">qualifications.md</File>
+          <File href="/docs/courses">courses.md</File>
         </Folder>
       </div>
     </aside>

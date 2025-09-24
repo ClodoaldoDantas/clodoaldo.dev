@@ -1,6 +1,11 @@
 "use client";
 
-import { ChevronDownIcon, ChevronRightIcon, FolderIcon } from "lucide-react";
+import {
+  ChevronDownIcon,
+  ChevronRightIcon,
+  FolderIcon,
+  FolderOpenIcon,
+} from "lucide-react";
 import { Collapsible } from "radix-ui";
 import { type ReactNode, useState } from "react";
 import styles from "./styles.module.css";
@@ -18,11 +23,16 @@ export function Folder({ title, children, defaultOpen = false }: FolderProps) {
     <Collapsible.Root open={isOpen} onOpenChange={setIsOpen}>
       <Collapsible.Trigger className={styles.trigger}>
         {isOpen ? (
-          <ChevronDownIcon size={16} />
+          <>
+            <ChevronDownIcon size={16} />
+            <FolderOpenIcon size={18} />
+          </>
         ) : (
-          <ChevronRightIcon size={16} />
+          <>
+            <ChevronRightIcon size={16} />
+            <FolderIcon size={18} />
+          </>
         )}
-        <FolderIcon size={18} />
         {title}
       </Collapsible.Trigger>
 
