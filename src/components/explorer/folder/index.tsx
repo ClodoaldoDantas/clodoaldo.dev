@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { Collapsible } from "radix-ui";
 import { type ReactNode, useState } from "react";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 type FolderProps = {
   title: string;
