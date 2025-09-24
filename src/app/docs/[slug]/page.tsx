@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { githubGist } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { getMarkdown } from "@/utils/markdown";
+import { Editor } from "@/components/editor";
+import { getDocument } from "@/utils/markdown";
 
 type DocsPageProps = {
   params: Promise<{ slug: string }>;
@@ -9,20 +8,11 @@ type DocsPageProps = {
 
 export default async function DocsPage({ params }: DocsPageProps) {
   const { slug } = await params;
-  const content = getMarkdown(slug);
+  const content = getDocument(slug);
 
   if (!content) {
     notFound();
   }
 
-  return (
-    <SyntaxHighlighter
-      language="markdown"
-      style={githubGist}
-      customStyle={{ fontSize: 18 }}
-      wrapLongLines
-    >
-      {content}
-    </SyntaxHighlighter>
-  );
+  return <Editor content={content} />;
 }

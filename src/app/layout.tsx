@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={`${spaceMono.className}`}>
         <main>
           <Explorer />
-          <section className="editor">{children}</section>
+          <section className="content">{children}</section>
         </main>
       </body>
     </html>
