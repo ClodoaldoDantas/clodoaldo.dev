@@ -5,5 +5,4 @@
 - [x] Componente Explorer
 - [x] Componente Editor
 - [x] Syntax Highlight no código markdown
-- [] Menu Bar
-- [] Command Pallete
+- [x] Command Menu
