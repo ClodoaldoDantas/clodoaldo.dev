@@ -1,6 +1,6 @@
 "use client";
 
-import { FileIcon, FileSearchIcon } from "lucide-react";
+import { FileIcon, SearchCodeIcon } from "lucide-react";
 import { Dialog, VisuallyHidden } from "radix-ui";
 import { useCommandMenu } from "@/hooks/use-command-menu";
 import styles from "./styles.module.scss";
@@ -20,7 +20,7 @@ export function CommandMenu({ documents }: { documents: string[] }) {
     <Dialog.Root open={isOpenDialog} onOpenChange={setIsOpenDialog}>
       <Dialog.Trigger className={styles.openButton} asChild>
         <button type="button" aria-label="Ir para um arquivo">
-          <FileSearchIcon size={18} />
+          <SearchCodeIcon size={18} />
         </button>
       </Dialog.Trigger>
 
