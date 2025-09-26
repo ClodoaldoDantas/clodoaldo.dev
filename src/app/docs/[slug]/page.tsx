@@ -1,8 +1,17 @@
 import { notFound } from "next/navigation";
 import { CurrentFile } from "@/components/current-file";
 import { Editor } from "@/components/editor";
-import { getDocument } from "@/utils/markdown";
+import { getAllDocuments, getDocument } from "@/utils/markdown";
+import { getSlug } from "@/utils/get-slug";
 import styles from "./page.module.scss";
+
+export async function generateStaticParams() {
+  const documents = getAllDocuments();
+
+  return documents.map((doc) => ({
+    slug: getSlug(doc),
+  }));
+}
 
 type DocsPageProps = {
   params: Promise<{ slug: string }>;

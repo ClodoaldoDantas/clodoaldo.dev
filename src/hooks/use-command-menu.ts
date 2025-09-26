@@ -1,3 +1,4 @@
+import { getSlug } from "@/utils/get-slug";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
@@ -15,8 +16,8 @@ export function useCommandMenu(documents: string[]) {
 
   const navigateToFile = useCallback(
     (path: string) => {
-      const formattedPath = path.replace(".md", "");
-      router.push(`/docs/${formattedPath}`);
+      const slug = getSlug(path);
+      router.push(`/docs/${slug}`);
       setIsOpenDialog(false);
     },
     [router.push],
