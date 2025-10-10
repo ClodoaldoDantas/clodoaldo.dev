@@ -1,3 +1,5 @@
+import { SearchIcon } from "lucide-react";
+import { Dialog } from "radix-ui";
 import { getAllDocuments } from "@/utils/markdown";
 import { CommandMenu } from "../command-menu";
 import { File } from "./file";
@@ -11,7 +13,15 @@ export function Explorer() {
     <aside className={styles.explorer}>
       <div className={styles.header}>
         <span className={styles.label}>Explorer</span>
-        <CommandMenu documents={documents} />
+
+        <CommandMenu items={documents}>
+          <Dialog.Trigger
+            className={styles.openButton}
+            aria-label="Ir para um arquivo"
+          >
+            <SearchIcon size={18} />
+          </Dialog.Trigger>
+        </CommandMenu>
       </div>
 
       <div className={styles.content}>

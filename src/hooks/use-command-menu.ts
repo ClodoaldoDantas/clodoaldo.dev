@@ -1,18 +1,18 @@
-import { getSlug } from "@/utils/get-slug";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { getSlug } from "@/utils/get-slug";
 
-export function useCommandMenu(documents: string[]) {
+export function useCommandMenu(items: string[]) {
   const router = useRouter();
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const filteredDocuments = useMemo(() => {
-    return documents.filter((doc) =>
-      doc.toLowerCase().includes(searchTerm.toLowerCase()),
+  const filteredItems = useMemo(() => {
+    return items.filter((item) =>
+      item.toLowerCase().includes(searchTerm.toLowerCase()),
     );
-  }, [documents, searchTerm]);
+  }, [items, searchTerm]);
 
   const navigateToFile = useCallback(
     (path: string) => {
@@ -47,21 +47,21 @@ export function useCommandMenu(documents: string[]) {
         case "ArrowDown":
           event.preventDefault();
           setSelectedIndex((state) =>
-            state < filteredDocuments.length - 1 ? state + 1 : 0,
+            state < filteredItems.length - 1 ? state + 1 : 0,
           );
           break;
 
         case "ArrowUp":
           event.preventDefault();
           setSelectedIndex((state) =>
-            state > 0 ? state - 1 : filteredDocuments.length - 1,
+            state > 0 ? state - 1 : filteredItems.length - 1,
           );
           break;
 
         case "Enter":
           event.preventDefault();
-          if (filteredDocuments[selectedIndex]) {
-            navigateToFile(filteredDocuments[selectedIndex]);
+          if (filteredItems[selectedIndex]) {
+            navigateToFile(filteredItems[selectedIndex]);
           }
           break;
       }
@@ -69,7 +69,7 @@ export function useCommandMenu(documents: string[]) {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpenDialog, filteredDocuments, navigateToFile, selectedIndex]);
+  }, [isOpenDialog, filteredItems, navigateToFile, selectedIndex]);
 
   /** Reset search term and selected index when dialog is closed */
   useEffect(() => {
@@ -86,6 +86,6 @@ export function useCommandMenu(documents: string[]) {
     setSearchTerm,
     navigateToFile,
     selectedIndex,
-    filteredDocuments,
+    filteredItems,
   };
 }

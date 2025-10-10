@@ -1,0 +1,19 @@
+.shortcuts {
+  margin-top: 2rem;
+
+  @media (width < 800px) {
+    display: none;
+  }
+}
+
+.command {
+  font-size: 1.25rem;
+
+  kbd {
+    padding: 2px 6px;
+    font-size: 1rem;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+    border-radius: 0.375rem;
+  }
+}

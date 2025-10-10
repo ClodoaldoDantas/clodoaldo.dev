@@ -7,6 +7,10 @@
   background-color: var(--gray-100);
   border-right: 1px solid var(--gray-200);
   padding: 1rem;
+
+  @media (width < 800px) {
+    display: none;
+  }
 }
 
 .header {
@@ -21,4 +25,20 @@
 
 .content {
   margin-top: 1rem;
+}
+
+.openButton {
+  border: 0;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 0.375rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+
+  &:hover {
+    background-color: var(--gray-200);
+  }
 }

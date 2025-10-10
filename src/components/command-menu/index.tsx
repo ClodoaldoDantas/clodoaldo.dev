@@ -1,11 +1,18 @@
 "use client";
 
-import { FileIcon, SearchCodeIcon } from "lucide-react";
+import { FileIcon } from "lucide-react";
 import { Dialog, VisuallyHidden } from "radix-ui";
+import type { ReactNode } from "react";
 import { useCommandMenu } from "@/hooks/use-command-menu";
 import styles from "./styles.module.scss";
 
-export function CommandMenu({ documents }: { documents: string[] }) {
+export function CommandMenu({
+  items,
+  children,
+}: {
+  items: string[];
+  children: ReactNode;
+}) {
   const {
     isOpenDialog,
     setIsOpenDialog,
@@ -13,16 +20,12 @@ export function CommandMenu({ documents }: { documents: string[] }) {
     setSearchTerm,
     selectedIndex,
     navigateToFile,
-    filteredDocuments,
-  } = useCommandMenu(documents);
+    filteredItems,
+  } = useCommandMenu(items);
 
   return (
     <Dialog.Root open={isOpenDialog} onOpenChange={setIsOpenDialog}>
-      <Dialog.Trigger className={styles.openButton} asChild>
-        <button type="button" aria-label="Ir para um arquivo">
-          <SearchCodeIcon size={18} />
-        </button>
-      </Dialog.Trigger>
+      {children}
 
       <Dialog.Portal>
         <Dialog.Overlay className={styles.overlay} />
@@ -42,20 +45,20 @@ export function CommandMenu({ documents }: { documents: string[] }) {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
 
-          {filteredDocuments.length === 0 && (
+          {filteredItems.length === 0 && (
             <p className={styles.noResults}>Nenhum resultado encontrado.</p>
           )}
 
           <div className={styles.results}>
-            {filteredDocuments.map((doc, index) => (
+            {filteredItems.map((item, index) => (
               <button
-                key={doc}
+                key={item}
                 type="button"
                 className={`${styles.resultItem} ${index === selectedIndex ? styles.selected : ""}`}
-                onClick={() => navigateToFile(doc)}
+                onClick={() => navigateToFile(item)}
               >
                 <FileIcon size={16} />
-                {doc}
+                {item}
               </button>
             ))}
           </div>
