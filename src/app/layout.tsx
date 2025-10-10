@@ -30,7 +30,6 @@ export const metadata: Metadata = {
       url: "https://clodoaldo.dev",
     },
   ],
-  themeColor: "#111827",
   robots: {
     index: true,
     follow: true,
