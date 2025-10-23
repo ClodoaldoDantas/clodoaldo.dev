@@ -1,0 +1,17 @@
+.trigger {
+  appearance: none;
+  border: 0;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+
+  background-color: var(--gray-100);
+  font-size: 0.875rem;
+
+  &:hover {
+    background-color: var(--gray-200);
+  }
+}

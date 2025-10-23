@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Space_Mono } from "next/font/google";
-import "./globals.scss";
 import { Explorer } from "@/components/explorer";
+import { FeedbackWidget } from "@/components/feedback-widget";
+import { StatusBar } from "@/components/status-bar";
+import "./globals.scss";
+import { Content } from "@/components/content";
 
 const spaceMono = Space_Mono({
   weight: ["400", "700"],
@@ -46,7 +49,11 @@ export default function RootLayout({
       <body className={`${spaceMono.className}`}>
         <main>
           <Explorer />
-          <section className="content">{children}</section>
+          <Content>{children}</Content>
+
+          <StatusBar>
+            <FeedbackWidget />
+          </StatusBar>
         </main>
       </body>
     </html>
