@@ -29,7 +29,7 @@ export function CommandMenu({
 
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
-        <Dialog.Content className="dialog-content">
+        <Dialog.Content className={`dialog-content ${styles.content}`}>
           <VisuallyHidden.Root>
             <Dialog.Title>Buscar Arquivo</Dialog.Title>
             <Dialog.Description>

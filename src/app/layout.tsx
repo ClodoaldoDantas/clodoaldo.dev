@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Mono } from "next/font/google";
 import { Explorer } from "@/components/explorer";
-import { FeedbackWidget } from "@/components/feedback-widget";
+import { FeedbackDialog } from "@/components/feedback-dialog";
 import { StatusBar } from "@/components/status-bar";
 import "./globals.scss";
 import { Content } from "@/components/content";
@@ -52,7 +52,7 @@ export default function RootLayout({
           <Content>{children}</Content>
 
           <StatusBar>
-            <FeedbackWidget />
+            <FeedbackDialog />
           </StatusBar>
         </main>
       </body>
