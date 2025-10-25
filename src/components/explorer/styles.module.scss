@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
 
-  height: 100vh;
+  height: calc(100vh - 32px);
   width: 18.75rem;
   background-color: var(--gray-100);
   border-right: 1px solid var(--gray-200);
