@@ -1,8 +1,9 @@
 "use client";
 
-import { MessageCircleIcon } from "lucide-react";
+import { ThumbsUpIcon } from "lucide-react";
 import { Dialog } from "radix-ui";
 import { useState } from "react";
+import statusBarStyles from "../styles.module.scss";
 import { FeedbackDone } from "./feedback-done";
 import { FeedbackForm } from "./feedback-form";
 import styles from "./styles.module.scss";
@@ -14,8 +15,8 @@ export function FeedbackDialog() {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button className={styles.trigger} type="button">
-          <MessageCircleIcon size={16} />
+        <button type="button" className={statusBarStyles.statusBarTrigger}>
+          <ThumbsUpIcon size={16} />
           Avaliação
         </button>
       </Dialog.Trigger>

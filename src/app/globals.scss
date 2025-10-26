@@ -48,7 +48,16 @@ body {
 
   background-color: var(--color-canvas-default);
   color: var(--text-color);
+
+  &[data-font="jetbrains-mono"] {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  &[data-font="space-mono"] {
+    font-family: "Space Mono", monospace;
+  }
 }
+
 
 a {
   text-decoration: none;

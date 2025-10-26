@@ -3,7 +3,7 @@
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useEffect } from "react";
 import { usePreferencesStore } from "@/store/preferences";
-import styles from "./styles.module.scss";
+import statusBarStyles from "../styles.module.scss";
 
 export function ThemeToggle() {
   const theme = usePreferencesStore((state) => state.theme);
@@ -21,12 +21,13 @@ export function ThemeToggle() {
 
   return (
     <button
+      title="Clique para alternar o tema do site"
       type="button"
-      aria-label="Alternar tema"
-      className={styles.themeToggleButton}
+      className={statusBarStyles.statusBarTrigger}
       onClick={handleThemeChange}
     >
       {isDarkTheme ? <SunIcon size={16} /> : <MoonIcon size={16} />}
+      {isDarkTheme ? "Tema claro" : "Tema escuro"}
     </button>
   );
 }
