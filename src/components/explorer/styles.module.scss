@@ -4,8 +4,8 @@
 
   height: calc(100vh - 32px);
   width: 18.75rem;
-  background-color: var(--gray-100);
-  border-right: 1px solid var(--gray-200);
+  background-color: var(--color-canvas-inset);
+  border-right: 1px solid var(--border-color);
   padding: 1rem;
 
   @media (width < 800px) {
@@ -37,8 +37,9 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  color: var(--text-color);
 
   &:hover {
-    background-color: var(--gray-200);
+    background-color: var(--item-hover-bg);
   }
 }

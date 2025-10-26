@@ -1,4 +1,4 @@
-import { SearchIcon } from "lucide-react";
+import { FilesIcon } from "lucide-react";
 import { Dialog } from "radix-ui";
 import { getAllDocuments } from "@/utils/markdown";
 import { CommandMenu } from "../command-menu";
@@ -19,7 +19,7 @@ export function Explorer() {
             className={styles.openButton}
             aria-label="Ir para um arquivo"
           >
-            <SearchIcon size={18} />
+            <FilesIcon size={18} />
           </Dialog.Trigger>
         </CommandMenu>
       </div>

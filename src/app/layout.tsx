@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Mono } from "next/font/google";
 import { Explorer } from "@/components/explorer";
-import { FeedbackDialog } from "@/components/feedback-dialog";
 import { StatusBar } from "@/components/status-bar";
 import "./globals.scss";
 import { Content } from "@/components/content";
@@ -50,10 +49,7 @@ export default function RootLayout({
         <main>
           <Explorer />
           <Content>{children}</Content>
-
-          <StatusBar>
-            <FeedbackDialog />
-          </StatusBar>
+          <StatusBar />
         </main>
       </body>
     </html>
