@@ -8,11 +8,12 @@
   gap: 0.5rem;
   padding: 0 1rem;
 
-  background-color: var(--gray-100);
+  background-color: transparent;
+  color: var(--text-color);
   font-size: 0.875rem;
 
   &:hover {
-    background-color: var(--gray-200);
+    background-color: var(--item-hover-bg);
   }
 }
 
@@ -23,7 +24,7 @@
 .title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--gray-900);
+  color: var(--text-color);
 }
 
 .description {

@@ -1,5 +1,8 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { stackoverflowLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import {
+  stackoverflowDark,
+  stackoverflowLight,
+} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 type EditorProps = {
   content: string;
@@ -7,11 +10,13 @@ type EditorProps = {
 };
 
 export function Editor({ content, language = "markdown" }: EditorProps) {
+  const isDarkMode = false; // Replace with actual theme detection logic
+
   return (
     <SyntaxHighlighter
       language={language}
-      style={stackoverflowLight}
-      customStyle={{ fontSize: 18, backgroundColor: "transparent" }}
+      style={isDarkMode ? stackoverflowDark : stackoverflowLight}
+      customStyle={{ fontSize: 18, background: "transparent" }}
       wrapLongLines
     >
       {content}
