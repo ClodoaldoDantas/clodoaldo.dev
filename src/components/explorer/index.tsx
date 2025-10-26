@@ -1,4 +1,4 @@
-import { FilesIcon, SearchIcon } from "lucide-react";
+import { FilesIcon } from "lucide-react";
 import { Dialog } from "radix-ui";
 import { getAllDocuments } from "@/utils/markdown";
 import { CommandMenu } from "../command-menu";
