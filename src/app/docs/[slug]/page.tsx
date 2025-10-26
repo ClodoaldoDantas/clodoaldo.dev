@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import { CurrentFile } from "@/components/current-file";
-import { Editor } from "@/components/editor";
-import { getAllDocuments, getDocument } from "@/utils/markdown";
+import { CurrentFile } from "@/app/docs/[slug]/_components/current-file";
+import { Editor } from "@/app/docs/[slug]/_components/editor";
 import { getSlug } from "@/utils/get-slug";
+import { getAllDocuments, getDocument } from "@/utils/markdown";
 import styles from "./page.module.scss";
 
 export async function generateStaticParams() {

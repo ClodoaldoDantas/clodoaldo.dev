@@ -1,6 +1,6 @@
 import { HandMetalIcon } from "lucide-react";
-import { FileBrowserButton } from "@/components/file-browser-button";
-import { Shortcuts } from "@/components/shortcuts";
+import { FileBrowserButton } from "@/app/(home)/_components/file-browser-button";
+import { Shortcuts } from "@/app/(home)/_components/shortcuts";
 import styles from "./page.module.scss";
 
 export default function Home() {
