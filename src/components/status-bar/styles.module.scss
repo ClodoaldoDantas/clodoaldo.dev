@@ -23,3 +23,22 @@
   justify-content: flex-end;
   gap: 0.25rem;
 }
+
+.statusBarTrigger {
+  appearance: none;
+  border: 0;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 0.875rem;
+
+  &:hover {
+    background-color: var(--item-hover-bg);
+  }
+}

@@ -1,4 +1,5 @@
 import { FeedbackDialog } from "./feedback-dialog";
+import { FontToggle } from "./font-toggle";
 import styles from "./styles.module.scss";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -7,6 +8,7 @@ export function StatusBar() {
     <div className={styles.statusBar}>
       <div className={styles.statusBarContainer}>
         <FeedbackDialog />
+        <FontToggle />
         <ThemeToggle />
       </div>
     </div>
