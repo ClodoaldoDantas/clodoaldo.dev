@@ -11,12 +11,6 @@ export function ThemeToggle() {
   const theme = usePreferencesStore((state) => state.theme);
   const setTheme = usePreferencesStore((state) => state.setTheme);
 
-  const isDarkTheme = theme === "dark";
-
-  const handleThemeChange = () => {
-    setTheme(isDarkTheme ? "light" : "dark");
-  };
-
   const applyTheme = useCallback((newTheme: Theme) => {
     document.documentElement.setAttribute("data-theme", newTheme);
   }, []);
@@ -38,7 +32,6 @@ export function ThemeToggle() {
           title="Troque o tema do site"
           type="button"
           className={statusBarStyles.statusBarTrigger}
-          onClick={handleThemeChange}
         >
           <ThemeToggleIcon />
         </button>
