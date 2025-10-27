@@ -15,9 +15,13 @@ export function FeedbackDialog() {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button type="button" className={statusBarStyles.statusBarTrigger}>
-          <ThumbsUpIcon size={16} />
-          Avaliação
+        <button
+          title="Faça uma avalição do site"
+          type="button"
+          aria-label="Fazer avaliação"
+          className={statusBarStyles.statusBarTrigger}
+        >
+          <ThumbsUpIcon size={16} aria-hidden="true" />
         </button>
       </Dialog.Trigger>
 

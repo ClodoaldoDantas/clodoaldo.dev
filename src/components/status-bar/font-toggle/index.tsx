@@ -26,11 +26,12 @@ export function FontToggle() {
       <DropdownMenu.Trigger asChild>
         <button
           type="button"
+          title="Troque a fonte do site"
           aria-label="Trocar fonte"
           className={statusBarStyles.statusBarTrigger}
           onClick={handleToggleFont}
         >
-          <CaseSensitiveIcon size={18} />
+          <CaseSensitiveIcon size={18} aria-hidden="true" />
         </button>
       </DropdownMenu.Trigger>
 
