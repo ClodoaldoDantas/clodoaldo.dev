@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 type Theme = "light" | "dark";
-type FontFamily = "space-mono" | "jetbrains-mono";
+export type FontFamily = "space-mono" | "jetbrains-mono";
 
 const DEFAULT_THEME: Theme = "light";
 export const DEFAULT_FONT_FAMILY: FontFamily = "space-mono";

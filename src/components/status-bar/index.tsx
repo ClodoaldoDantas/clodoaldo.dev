@@ -8,8 +8,8 @@ export function StatusBar() {
     <div className={styles.statusBar}>
       <div className={styles.statusBarContainer}>
         <FeedbackDialog />
-        <FontToggle />
         <ThemeToggle />
+        <FontToggle />
       </div>
     </div>
   );

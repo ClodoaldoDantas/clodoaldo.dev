@@ -1,10 +1,10 @@
 "use client";
 
-import { CaseSensitiveIcon } from "lucide-react";
+import { CaseSensitiveIcon, CheckIcon } from "lucide-react";
+import { DropdownMenu } from "radix-ui";
 import { useEffect } from "react";
-import { usePreferencesStore } from "@/store/preferences";
+import { type FontFamily, usePreferencesStore } from "@/store/preferences";
 import statusBarStyles from "../styles.module.scss";
-import styles from "./styles.module.scss";
 
 export function FontToggle() {
   const fontFamily = usePreferencesStore((state) => state.fontFamily);
@@ -21,17 +21,53 @@ export function FontToggle() {
     document.body.setAttribute("data-font", fontFamily);
   }, [fontFamily]);
 
-  const fontFamilyFormatted = fontFamily.replace(/-/g, " ");
-
   return (
-    <button
-      title="Clique para alternar a fonte do editor"
-      type="button"
-      className={statusBarStyles.statusBarTrigger}
-      onClick={handleToggleFont}
-    >
-      <CaseSensitiveIcon size={18} />
-      <span className={styles.label}>Fonte: {fontFamilyFormatted}</span>
-    </button>
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger asChild>
+        <button
+          type="button"
+          aria-label="Trocar fonte"
+          className={statusBarStyles.statusBarTrigger}
+          onClick={handleToggleFont}
+        >
+          <CaseSensitiveIcon size={18} />
+        </button>
+      </DropdownMenu.Trigger>
+
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          side="top"
+          className="popover-content"
+          sideOffset={4}
+        >
+          <DropdownMenu.RadioGroup
+            value={fontFamily}
+            onValueChange={(value) => setFontFamily(value as FontFamily)}
+          >
+            <DropdownMenu.RadioItem
+              className="popover-radio-item"
+              value="space-mono"
+            >
+              <DropdownMenu.ItemIndicator className="popover-item-indicator">
+                <CheckIcon size={14} />
+              </DropdownMenu.ItemIndicator>
+              Space Mono
+            </DropdownMenu.RadioItem>
+
+            <DropdownMenu.RadioItem
+              className="popover-radio-item"
+              value="jetbrains-mono"
+            >
+              <DropdownMenu.ItemIndicator className="popover-item-indicator">
+                <CheckIcon size={14} />
+              </DropdownMenu.ItemIndicator>
+              JetBrains Mono
+            </DropdownMenu.RadioItem>
+          </DropdownMenu.RadioGroup>
+
+          <DropdownMenu.Arrow className="popover-arrow" />
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   );
 }
