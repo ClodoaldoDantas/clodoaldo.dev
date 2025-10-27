@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {
   stackoverflowDark,
@@ -14,11 +15,21 @@ type EditorProps = {
 
 export function Editor({ content, language = "markdown" }: EditorProps) {
   const theme = usePreferencesStore((state) => state.theme);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (theme === "system") {
+      const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+      setIsDarkMode(prefersDarkMode.matches);
+    } else {
+      setIsDarkMode(theme === "dark");
+    }
+  }, [theme]);
 
   return (
     <SyntaxHighlighter
       language={language}
-      style={theme === "dark" ? stackoverflowDark : stackoverflowLight}
+      style={isDarkMode ? stackoverflowDark : stackoverflowLight}
       customStyle={{ fontSize: 18, background: "transparent" }}
       wrapLongLines
     >
