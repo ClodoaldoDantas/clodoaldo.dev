@@ -1,7 +1,5 @@
-import { FilesIcon } from "lucide-react";
-import { Dialog } from "radix-ui";
 import { getAllDocuments } from "@/utils/markdown";
-import { CommandMenu } from "../command-menu";
+import { CommandMenu } from "./command-menu";
 import { File } from "./file";
 import { Folder } from "./folder";
 import styles from "./styles.module.scss";
@@ -14,14 +12,7 @@ export function Explorer() {
       <div className={styles.header}>
         <span className={styles.label}>Explorer</span>
 
-        <CommandMenu items={documents}>
-          <Dialog.Trigger
-            className={styles.openButton}
-            aria-label="Ir para um arquivo"
-          >
-            <FilesIcon size={18} />
-          </Dialog.Trigger>
-        </CommandMenu>
+        <CommandMenu items={documents} />
       </div>
 
       <div className={styles.content}>
