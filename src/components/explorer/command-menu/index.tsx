@@ -1,18 +1,12 @@
 "use client";
 
-import { FileIcon } from "lucide-react";
+import { FileIcon, FilesIcon } from "lucide-react";
 import { Dialog, VisuallyHidden } from "radix-ui";
-import type { ReactNode } from "react";
 import { useCommandMenu } from "@/hooks/use-command-menu";
+import explorerStyles from "../styles.module.scss";
 import styles from "./styles.module.scss";
 
-export function CommandMenu({
-  items,
-  children,
-}: {
-  items: string[];
-  children: ReactNode;
-}) {
+export function CommandMenu({ items }: { items: string[] }) {
   const {
     isOpenDialog,
     setIsOpenDialog,
@@ -25,7 +19,16 @@ export function CommandMenu({
 
   return (
     <Dialog.Root open={isOpenDialog} onOpenChange={setIsOpenDialog}>
-      {children}
+      <Dialog.Trigger asChild>
+        <button
+          type="button"
+          className={explorerStyles.actionButton}
+          aria-label="Ir para um arquivo"
+          title="Clique para buscar um arquivo"
+        >
+          <FilesIcon size={18} />
+        </button>
+      </Dialog.Trigger>
 
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
