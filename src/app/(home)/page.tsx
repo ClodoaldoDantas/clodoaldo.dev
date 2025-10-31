@@ -1,6 +1,6 @@
 import { HandMetalIcon } from "lucide-react";
-import { FileBrowserButton } from "@/app/(home)/_components/file-browser-button";
 import { Shortcuts } from "@/app/(home)/_components/shortcuts";
+import { NavigationMobile } from "./_components/navigation-mobile";
 import styles from "./page.module.scss";
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <div className={styles.container}>
       <HandMetalIcon size={200} className={styles.icon} />
       <Shortcuts />
-      <FileBrowserButton />
+      <NavigationMobile />
     </div>
   );
 }
