@@ -19,12 +19,15 @@ export function CommandMenu({ items }: { items: string[] }) {
 
   return (
     <Dialog.Root open={isOpenDialog} onOpenChange={setIsOpenDialog}>
-      <Dialog.Trigger
-        className={explorerStyles.actionButton}
-        aria-label="Ir para um arquivo"
-        title="Clique para buscar um arquivo"
-      >
-        <FilesIcon size={18} />
+      <Dialog.Trigger asChild>
+        <button
+          type="button"
+          className={explorerStyles.actionButton}
+          aria-label="Ir para um arquivo"
+          title="Clique para buscar um arquivo"
+        >
+          <FilesIcon size={18} />
+        </button>
       </Dialog.Trigger>
 
       <Dialog.Portal>
