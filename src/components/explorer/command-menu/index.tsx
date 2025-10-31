@@ -3,6 +3,7 @@
 import { FileIcon, FilesIcon } from "lucide-react";
 import { Dialog, VisuallyHidden } from "radix-ui";
 import { useCommandMenu } from "@/hooks/use-command-menu";
+import explorerStyles from "../styles.module.scss";
 import styles from "./styles.module.scss";
 
 export function CommandMenu({ items }: { items: string[] }) {
@@ -19,8 +20,9 @@ export function CommandMenu({ items }: { items: string[] }) {
   return (
     <Dialog.Root open={isOpenDialog} onOpenChange={setIsOpenDialog}>
       <Dialog.Trigger
-        className={styles.trigger}
+        className={explorerStyles.actionButton}
         aria-label="Ir para um arquivo"
+        title="Clique para buscar um arquivo"
       >
         <FilesIcon size={18} />
       </Dialog.Trigger>

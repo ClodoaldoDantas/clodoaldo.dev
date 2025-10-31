@@ -2,6 +2,7 @@ import { getAllDocuments } from "@/utils/markdown";
 import { CommandMenu } from "./command-menu";
 import { File } from "./file";
 import { Folder } from "./folder";
+import { FullscreenButton } from "./fullscreen-button";
 import styles from "./styles.module.scss";
 
 export function Explorer() {
@@ -12,7 +13,10 @@ export function Explorer() {
       <div className={styles.header}>
         <span className={styles.label}>Explorer</span>
 
-        <CommandMenu items={documents} />
+        <div className={styles.actions}>
+          <CommandMenu items={documents} />
+          <FullscreenButton />
+        </div>
       </div>
 
       <div className={styles.content}>
