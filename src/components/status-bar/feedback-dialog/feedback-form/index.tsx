@@ -1,22 +1,16 @@
 import { LoaderIcon } from "lucide-react";
-import Image from "next/image";
 import { Dialog } from "radix-ui";
 import { type FormEvent, useState } from "react";
-import amazingIcon from "@/assets/amazing-icon.svg";
-import awefulIcon from "@/assets/aweful-icon.svg";
-import badIcon from "@/assets/bad-icon.svg";
-import goodIcon from "@/assets/good-icon.svg";
-import okayIcon from "@/assets/okay-icon.svg";
 import { Button } from "@/components/button";
 import dialogStyles from "../styles.module.scss";
 import styles from "./styles.module.scss";
 
 const options = [
-  { label: "Péssima", value: "aweful", icon: awefulIcon },
-  { label: "Ruim", value: "bad", icon: badIcon },
-  { label: "Okay", value: "okay", icon: okayIcon },
-  { label: "Bom", value: "good", icon: goodIcon },
-  { label: "Incrível", value: "amazing", icon: amazingIcon },
+  { label: "Péssima", value: "aweful", icon: "😢" },
+  { label: "Ruim", value: "bad", icon: "😟" },
+  { label: "Okay", value: "okay", icon: "😐" },
+  { label: "Bom", value: "good", icon: "😊" },
+  { label: "Incrível", value: "amazing", icon: "😍" },
 ];
 
 type FeedbackFormProps = {
@@ -27,7 +21,6 @@ export function FeedbackForm({ onFeedbackSent }: FeedbackFormProps) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [comment, setComment] = useState("");
   const [isPending, setIsPending] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   const handleSubmitFeedback = async (event: FormEvent) => {
     event.preventDefault();
@@ -57,7 +50,7 @@ export function FeedbackForm({ onFeedbackSent }: FeedbackFormProps) {
       console.error(error);
 
       if (error instanceof Error) {
-        setError(error.message);
+        window.alert(error.message);
       }
     } finally {
       setIsPending(false);
@@ -75,20 +68,19 @@ export function FeedbackForm({ onFeedbackSent }: FeedbackFormProps) {
       </Dialog.Description>
 
       <form onSubmit={handleSubmitFeedback}>
-        {error && <p className={styles.errorMessage}>{error}</p>}
-
         <div className={styles.options}>
           {options.map((option) => (
             <button
-              type="button"
               key={option.value}
+              type="button"
               className={`${styles.option} ${selectedOption === option.value ? styles.selected : ""}`}
               onClick={() => setSelectedOption(option.value)}
+              title={option.label}
             >
-              <div className={styles.optionIcon}>
-                <Image src={option.icon} alt="" width={56} height={56} />
-              </div>
-              <span className={styles.optionLabel}>{option.label}</span>
+              <span aria-hidden="true" role="img">
+                {option.icon}
+              </span>
+              <span className="sr-only">{option.label}</span>
             </button>
           ))}
         </div>
