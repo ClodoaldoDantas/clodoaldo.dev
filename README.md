@@ -1,5 +1,8 @@
 # 👨‍💻 clodoaldo.dev
 
+<img width="1920" height="1000" alt="screenshot-rocks" src="https://github.com/user-attachments/assets/7e928ff8-d7e0-4ef5-9994-9e916a41c9a5" />
+
+
 > **Página pessoal com interface inspirada em editores de código**
 
 Uma página pessoal moderna construída com Next.js, apresentando uma interface que simula um editor de código (VS Code-like), onde cada seção do portfólio é representada como um arquivo navegável.
