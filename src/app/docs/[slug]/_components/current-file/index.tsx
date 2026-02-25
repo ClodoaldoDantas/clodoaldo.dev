@@ -9,7 +9,7 @@ type CurrentFileProps = {
 
 export function CurrentFile({ filename, extension = ".md" }: CurrentFileProps) {
   return (
-    <div className={styles.tabBar}>
+    <div className={styles.tabBar} data-testid="active-tab">
       <div className={styles.file}>
         <span className={styles.fileName}>
           {filename}
