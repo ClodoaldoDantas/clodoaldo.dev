@@ -3,84 +3,127 @@ describe("Explorer", () => {
     cy.visit("/");
   });
 
-  it("should render explorer with title and folder structure", () => {
-    cy.get("aside").should("be.visible");
-    cy.contains("Explorer").should("be.visible");
+  const expandFolder = (folderName: string) => {
+    cy.contains("button", folderName).click();
+  };
 
-    cy.contains("button", "profile").should("be.visible");
-    cy.contains("button", "work").should("be.visible");
-    cy.contains("button", "education").should("be.visible");
-  });
-
-  it("should render profile folder opened by default", () => {
-    cy.contains("button", "profile").should(
+  const folderShouldBeExpanded = (folderName: string) => {
+    cy.contains("button", folderName).should(
       "have.attr",
       "aria-expanded",
       "true",
     );
-  });
+  };
 
-  it("should expand and collapse work folder when clicked", () => {
-    const button = cy.contains("button", "work");
-    button.should("have.attr", "aria-expanded", "false");
+  const folderShouldBeCollapsed = (folderName: string) => {
+    cy.contains("button", folderName).should(
+      "have.attr",
+      "aria-expanded",
+      "false",
+    );
+  };
 
-    button.click();
-    button.should("have.attr", "aria-expanded", "true");
+  const fileShouldBeVisible = (fileName: string) => {
+    cy.contains("a", fileName).should("be.visible");
+  };
 
-    button.click();
-    button.should("have.attr", "aria-expanded", "false");
-  });
+  const navigateToFile = (fileName: string) => {
+    cy.contains("a", fileName).click();
+  };
 
-  it("should expand and collapse education folder when clicked", () => {
-    const button = cy.contains("button", "education");
-    button.should("have.attr", "aria-expanded", "false");
+  const activeTabShouldContain = (fileName: string) => {
+    cy.get("div[data-testid='active-tab'] span").should("contain", fileName);
+  };
 
-    button.click();
-    button.should("have.attr", "aria-expanded", "true");
-
-    button.click();
-    button.should("have.attr", "aria-expanded", "false");
-  });
-
-  it("should display correct files when folders are expanded", () => {
-    cy.contains("a", "about.md").should("be.visible");
-
-    cy.contains("button", "work").click();
-    cy.contains("a", "experiences.md").should("be.visible");
-
-    cy.contains("button", "education").click();
-    cy.contains("a", "qualifications.md").should("be.visible");
-    cy.contains("a", "courses.md").should("be.visible");
-  });
-
-  it("should navigate to correct page when file is clicked", () => {
-    cy.contains("a", "about.md").click();
-    cy.url().should("include", "/docs/about");
-
-    cy.contains("button", "work").click();
-    cy.contains("a", "experiences.md").click();
-    cy.url().should("include", "/docs/experiences");
-
-    cy.contains("button", "education").click();
-
-    cy.contains("a", "qualifications.md").click();
-    cy.url().should("include", "/docs/qualifications");
-
-    cy.contains("a", "courses.md").click();
-    cy.url().should("include", "/docs/courses");
-  });
-
-  it("should display correct filename in active tab", () => {
-    cy.contains("a", "about.md").click();
-    cy.get("div[data-testid='active-tab'] span").should("contain", "about.md");
-  });
-
-  it("should close active tab when close button is clicked", () => {
-    cy.contains("a", "about.md").click();
-    cy.get("div[data-testid='active-tab']").should("be.visible");
-
-    cy.get("div[data-testid='active-tab'] a").click();
+  const activeTabShouldNotExist = () => {
     cy.get("div[data-testid='active-tab']").should("not.exist");
-    cy.url().should("eq", `${Cypress.config().baseUrl}/`);
+  };
+
+  const closeActiveTab = () => {
+    cy.get("div[data-testid='active-tab'] a").click();
+  };
+
+  describe("Rendering", () => {
+    it("should render explorer with title and folder structure", () => {
+      cy.get("aside").should("be.visible");
+      cy.contains("Explorer").should("be.visible");
+
+      fileShouldBeVisible("about.md");
+      folderShouldBeCollapsed("work");
+      folderShouldBeCollapsed("education");
+    });
+
+    it("should render profile folder opened by default", () => {
+      folderShouldBeExpanded("profile");
+    });
+  });
+
+  describe("Folder Interactions", () => {
+    it("should expand and collapse work folder when clicked", () => {
+      folderShouldBeCollapsed("work");
+
+      expandFolder("work");
+      folderShouldBeExpanded("work");
+
+      expandFolder("work");
+      folderShouldBeCollapsed("work");
+    });
+
+    it("should expand and collapse education folder when clicked", () => {
+      folderShouldBeCollapsed("education");
+
+      expandFolder("education");
+      folderShouldBeExpanded("education");
+
+      expandFolder("education");
+      folderShouldBeCollapsed("education");
+    });
+  });
+
+  describe("File Display", () => {
+    it("should display correct files when folders are expanded", () => {
+      fileShouldBeVisible("about.md");
+
+      expandFolder("work");
+      fileShouldBeVisible("experiences.md");
+
+      expandFolder("education");
+      fileShouldBeVisible("qualifications.md");
+      fileShouldBeVisible("courses.md");
+    });
+  });
+
+  describe("Navigation", () => {
+    it("should navigate to correct page when file is clicked", () => {
+      navigateToFile("about.md");
+      cy.url().should("include", "/docs/about");
+
+      expandFolder("work");
+      navigateToFile("experiences.md");
+      cy.url().should("include", "/docs/experiences");
+
+      expandFolder("education");
+      navigateToFile("qualifications.md");
+      cy.url().should("include", "/docs/qualifications");
+
+      navigateToFile("courses.md");
+      cy.url().should("include", "/docs/courses");
+    });
+  });
+
+  describe("Active Tab", () => {
+    it("should display correct filename in active tab", () => {
+      navigateToFile("about.md");
+      activeTabShouldContain("about.md");
+    });
+
+    it("should close active tab when close button is clicked", () => {
+      navigateToFile("about.md");
+      cy.get("div[data-testid='active-tab']").should("be.visible");
+
+      closeActiveTab();
+      activeTabShouldNotExist();
+      cy.url().should("eq", `${Cypress.config().baseUrl}/`);
+    });
   });
 });
