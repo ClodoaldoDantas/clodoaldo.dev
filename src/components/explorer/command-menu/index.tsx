@@ -23,7 +23,7 @@ export function CommandMenu({ items }: { items: string[] }) {
         <button
           type="button"
           className={explorerStyles.actionButton}
-          aria-label="Ir para um arquivo"
+          aria-label="Abrir menu de comandos"
           title="Clique para buscar um arquivo"
         >
           <FilesIcon size={18} />
