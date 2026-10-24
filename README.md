@@ -31,7 +31,7 @@ Uma página pessoal moderna construída com Next.js, apresentando uma interface 
 
 ### Pré-requisitos
 
-- Node.js 18+ 
+- Node.js 24.22.1 ou posterior da linha 24.x
 - npm, yarn ou pnpm
 
 ### Instalação
