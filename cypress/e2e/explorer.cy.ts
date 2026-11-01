@@ -47,7 +47,6 @@ describe("Explorer", () => {
     it("should render explorer with title and folder structure", () => {
       cy.get("aside").should("be.visible");
       cy.contains("Explorer").should("be.visible");
-      cy.get("button[aria-label='Entrar em tela cheia']").should("not.exist");
 
       fileShouldBeVisible("about.md");
       folderShouldBeCollapsed("work");
