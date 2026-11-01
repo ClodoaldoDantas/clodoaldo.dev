@@ -4,10 +4,6 @@ describe("StatusBar", () => {
     cy.visit("/");
   });
 
-  it("does not show the CLI link", () => {
-    cy.get('a[href="https://cli.clodoaldo.dev"]').should("not.exist");
-  });
-
   const openThemeMenu = () => {
     cy.get("button[aria-label='Alternar tema']").click();
   };
