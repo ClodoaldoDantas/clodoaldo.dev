@@ -20,7 +20,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .statusBarActions {
@@ -29,8 +29,7 @@
   align-items: center;
 }
 
-.statusBarTrigger,
-.statusBarLink {
+.statusBarTrigger {
   appearance: none;
   border: 0;
 
@@ -48,8 +47,4 @@
   &:hover {
     background-color: var(--item-hover-bg);
   }
-}
-
-.statusBarLink {
-  font-weight: 700;
 }
