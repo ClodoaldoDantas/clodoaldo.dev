@@ -1,51 +1,45 @@
 .explorer {
-  position: fixed;
-  inset: 0;
+    position: fixed;
+    inset: 0;
 
-  height: calc(100vh - 32px);
-  width: 18.75rem;
-  background-color: var(--color-canvas-inset);
-  border-right: 1px solid var(--border-color);
-  padding: 1rem;
+    height: calc(100vh - 32px);
+    width: 18.75rem;
+    background-color: var(--color-canvas-inset);
+    border-right: 1px solid var(--border-color);
+    padding: 1rem;
 
-  @media (width < 800px) {
-    display: none;
-  }
+    @media (width < 800px) {
+        display: none;
+    }
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .label {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .content {
-  margin-top: 1rem;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+    margin-top: 1rem;
 }
 
 .actionButton {
-  border: 0;
-  height: 2rem;
-  width: 2rem;
-  border-radius: 0.375rem;
+    border: 0;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 0.375rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--text-color);
 
-  &:hover {
-    background-color: var(--item-hover-bg);
-  }
+    &:hover {
+        background-color: var(--item-hover-bg);
+    }
 }
