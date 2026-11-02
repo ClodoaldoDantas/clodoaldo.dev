@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from "lucide-react";
+import { FileCode2 } from "lucide-react";
 import Link from "next/link";
 import { getSlug } from "@/utils/get-slug";
 import { getAllDocuments } from "@/utils/markdown";
@@ -18,7 +18,7 @@ export async function NavigationMobile() {
             href={`/docs/${slug}`}
             className={styles.navigationItem}
           >
-            <ArrowRightIcon size={20} />
+            <FileCode2 size={20} />
             {doc}
           </Link>
         );

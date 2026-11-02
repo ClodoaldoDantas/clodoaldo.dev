@@ -46,7 +46,7 @@ export function Editor({
             language={language}
             style={isDarkMode ? stackoverflowDark : stackoverflowLight}
             customStyle={{
-              fontSize: 18,
+              fontSize: 16,
               margin: 0,
               padding: 0,
               background: "transparent",
