@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Space_Mono } from "next/font/google";
+import { JetBrains_Mono, Source_Code_Pro, Space_Mono } from "next/font/google";
 import { Content } from "@/components/content";
 import { Explorer } from "@/components/explorer";
 import { StatusBar } from "@/components/status-bar";
@@ -16,6 +16,12 @@ const jetBrainsMono = JetBrains_Mono({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
+});
+
+const sourceCodePro = Source_Code_Pro({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-source-code-pro",
 });
 
 export const metadata: Metadata = {
@@ -54,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${spaceMono.variable} ${jetBrainsMono.variable}`}
+        className={`${spaceMono.variable} ${jetBrainsMono.variable} ${sourceCodePro.variable}`}
         data-font={DEFAULT_FONT_FAMILY}
       >
         <main>

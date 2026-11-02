@@ -11,8 +11,13 @@ export function FontToggle() {
   const setFontFamily = usePreferencesStore((state) => state.setFontFamily);
 
   const handleToggleFont = () => {
-    const newFont =
-      fontFamily === "space-mono" ? "jetbrains-mono" : "space-mono";
+    const fonts: FontFamily[] = [
+      "space-mono",
+      "jetbrains-mono",
+      "source-code-pro",
+    ];
+    const currentIndex = fonts.indexOf(fontFamily);
+    const newFont = fonts[(currentIndex + 1) % fonts.length];
 
     setFontFamily(newFont);
   };
@@ -63,6 +68,16 @@ export function FontToggle() {
                 <CheckIcon size={14} />
               </DropdownMenu.ItemIndicator>
               JetBrains Mono
+            </DropdownMenu.RadioItem>
+
+            <DropdownMenu.RadioItem
+              className="popover-radio-item"
+              value="source-code-pro"
+            >
+              <DropdownMenu.ItemIndicator className="popover-item-indicator">
+                <CheckIcon size={14} />
+              </DropdownMenu.ItemIndicator>
+              Source Code Pro
             </DropdownMenu.RadioItem>
           </DropdownMenu.RadioGroup>
 

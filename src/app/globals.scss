@@ -59,6 +59,10 @@ body {
   &[data-font="space-mono"] {
     font-family: "Space Mono", monospace;
   }
+
+  &[data-font="source-code-pro"] {
+    font-family: "Source Code Pro", monospace;
+  }
 }
 
 a {

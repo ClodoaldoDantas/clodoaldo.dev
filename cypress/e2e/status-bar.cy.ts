@@ -16,7 +16,9 @@ describe("StatusBar", () => {
     cy.contains(".popover-radio-item", label).click();
   };
 
-  const selectFont = (label: "Space Mono" | "JetBrains Mono") => {
+  const selectFont = (
+    label: "Space Mono" | "JetBrains Mono" | "Source Code Pro",
+  ) => {
     cy.contains(".popover-radio-item", label).click();
   };
 
@@ -41,6 +43,10 @@ describe("StatusBar", () => {
       openFontMenu();
       selectFont("JetBrains Mono");
       cy.get("body").should("have.attr", "data-font", "jetbrains-mono");
+
+      openFontMenu();
+      selectFont("Source Code Pro");
+      cy.get("body").should("have.attr", "data-font", "source-code-pro");
     });
   });
 });

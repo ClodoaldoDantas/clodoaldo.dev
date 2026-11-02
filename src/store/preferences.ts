@@ -2,10 +2,10 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export type Theme = "light" | "dark" | "system";
-export type FontFamily = "space-mono" | "jetbrains-mono";
+export type FontFamily = "space-mono" | "jetbrains-mono" | "source-code-pro";
 
 const DEFAULT_THEME: Theme = "system";
-export const DEFAULT_FONT_FAMILY: FontFamily = "space-mono";
+export const DEFAULT_FONT_FAMILY: FontFamily = "jetbrains-mono";
 
 interface PreferencesState {
   theme: Theme;
