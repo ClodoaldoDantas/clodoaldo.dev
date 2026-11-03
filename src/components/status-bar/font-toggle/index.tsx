@@ -10,18 +10,6 @@ export function FontToggle() {
   const fontFamily = usePreferencesStore((state) => state.fontFamily);
   const setFontFamily = usePreferencesStore((state) => state.setFontFamily);
 
-  const handleToggleFont = () => {
-    const fonts: FontFamily[] = [
-      "space-mono",
-      "jetbrains-mono",
-      "source-code-pro",
-    ];
-    const currentIndex = fonts.indexOf(fontFamily);
-    const newFont = fonts[(currentIndex + 1) % fonts.length];
-
-    setFontFamily(newFont);
-  };
-
   useEffect(() => {
     document.body.setAttribute("data-font", fontFamily);
   }, [fontFamily]);
@@ -34,9 +22,9 @@ export function FontToggle() {
           title="Troque a fonte do site"
           aria-label="Trocar fonte"
           className={statusBarStyles.statusBarTrigger}
-          onClick={handleToggleFont}
         >
           <CaseSensitiveIcon size={18} aria-hidden="true" />
+          <span className={statusBarStyles.statusBarTriggerLabel}>Fonte</span>
         </button>
       </DropdownMenu.Trigger>
 
