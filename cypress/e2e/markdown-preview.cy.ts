@@ -8,7 +8,9 @@ describe("Markdown preview", () => {
       .and("contain.text", "Preview")
       .click();
 
-    cy.get('[data-testid="markdown-preview"] h2').should("have.text", "Sobre");
+    cy.get('[data-testid="markdown-preview"]')
+      .contains("h2", "Sobre")
+      .should("be.visible");
     cy.get('[data-testid="markdown-source"]').should("not.exist");
     cy.get('[data-testid="markdown-preview"] a')
       .contains("Github")
