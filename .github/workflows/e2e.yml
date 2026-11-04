@@ -1,23 +1,17 @@
-name: Preview E2E
+name: E2E Tests
 
 on:
-  repository_dispatch:
-    types: [vercel.deployment.success]
+  pull_request:
 
 permissions:
   contents: read
-  statuses: write
 
 jobs:
   e2e:
-    if: github.event.client_payload.environment == 'preview'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the deployed commit
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.client_payload.git.sha }}
+      - uses: actions/checkout@v4
 
       - name: Use Node.js 24.22.1
         uses: actions/setup-node@v4
@@ -28,10 +22,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run E2E tests against the Vercel Preview
+      - name: Build application
+        run: npm run build
+
+      - name: Start application in background
+        run: |
+          npm start &
+          npx wait-on http://localhost:3000
+
+      - name: Run E2E tests
         run: npm run cy:run
-        env:
-          CYPRESS_BASE_URL: ${{ github.event.client_payload.url }}
 
       - name: Upload Cypress videos on failure
         if: failure()
@@ -39,7 +39,6 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
-          if-no-files-found: ignore
           retention-days: 3
 
       - name: Upload Cypress screenshots on failure
@@ -48,11 +47,4 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-          if-no-files-found: ignore
           retention-days: 3
-
-      - name: Report E2E status on the deployed commit
-        if: always()
-        uses: vercel/repository-dispatch/actions/status@v1
-        with:
-          name: E2E Preview
