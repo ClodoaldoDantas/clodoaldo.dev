@@ -3,5 +3,6 @@
 
   @media (width < 800px) {
     margin-left: 0;
+    padding-bottom: var(--mobile-status-bar-height);
   }
 }

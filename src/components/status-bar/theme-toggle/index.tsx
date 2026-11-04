@@ -34,6 +34,7 @@ export function ThemeToggle() {
           className={statusBarStyles.statusBarTrigger}
         >
           <ThemeToggleIcon />
+          <span className={statusBarStyles.statusBarTriggerLabel}>Tema</span>
         </button>
       </DropdownMenu.Trigger>
 

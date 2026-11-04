@@ -4,6 +4,10 @@
   justify-content: center;
   align-items: center;
   height: 100dvh;
+
+  @media (width < 800px) {
+    height: calc(100dvh - var(--mobile-status-bar-height));
+  }
 }
 
 .icon {

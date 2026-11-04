@@ -7,6 +7,7 @@
 }
 
 :root {
+  --mobile-status-bar-height: calc(3.5rem + env(safe-area-inset-bottom, 0px));
   --color-canvas-default: #ffffff;
   --color-canvas-inset: #f6f8fa;
   --border-color: #e1e4e8;
